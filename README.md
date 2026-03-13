@@ -1,7 +1,8 @@
-PlantPilot – Smart Irrigation Monitoring Stack (Docker)
+# PlantPilot – Smart Irrigation Monitoring Stack (Docker)
 
-Command to start the project:
+## Command to start the project
 
+```bash
 chmod +x setup.sh
 ./setup.sh
 
@@ -68,10 +69,9 @@ Capstone_Project/
 │
 ├── backend/
     ├── app.py              # Flask server (This is just the test script)
-    ├── sensor_simulator.py # Generates random sensor data  (This is for testing stuff without hardware)
+    ├── sensor_simulator.py # Generates random sensor data (This is for testing stuff without hardware)
     ├── requirements.txt    # Python dependencies
     └── Dockerfile          # Don't change this only change requirements.txt
-
 Services
 Flask API
 
@@ -90,8 +90,9 @@ Database interaction
 Default address:
 
 http://localhost:5000
-http://localhost:5000/metrics to view the scraped metrics
+http://localhost:5000/metrics
 
+Use /metrics to view the scraped Prometheus metrics.
 
 MariaDB
 
@@ -116,7 +117,7 @@ Port:
 3306
 Mosquitto MQTT Broker
 
-Handles sensor message delivery to the flask backend.
+Handles sensor message delivery to the Flask backend.
 
 Port:
 
@@ -138,8 +139,9 @@ humidity_percent
 Prometheus UI:
 
 http://localhost:9090
-http://localhost:9090/targets to view the targets of webscraping
+http://localhost:9090/targets
 
+Use /targets to view the targets of web scraping.
 
 Grafana
 
@@ -155,25 +157,46 @@ Humidity time series
 
 Grafana UI:
 
-You must add Prometheus as a datasource by going to connections and searching for Prometheus.
-(Make sure to add the prometheus url to the datasource. It should be http://prometheus:9090)
-
-You can then create a dashboard in the dashboards section using the datasource. 
-
-Once you finish the dashboard, you can click the three dots, hit sharre embed and copy the iframe and plug it into your html.
-You might need to configure the iframe a bit for things such as refresh rate and time range.
-
 http://localhost:3000
+Setup
+
+Go to Connections
+
+Search for Prometheus
+
+Add a new datasource
+
+Set the URL to:
+
+http://prometheus:9090
+
+Then create dashboards using the datasource.
+
+Once you finish the dashboard:
+
+Click the three dots
+
+Click Share
+
+Select Embed
+
+Copy the iframe
+
+Paste it into your HTML page
+
+You may need to adjust:
+
+Refresh rate
+
+Time range
 
 Default login:
 
 username: admin
 password: admin
-
-
 Sensor Simulation
 
-The simulate_sensors script simulates our sensors using random values.
+The sensor_simulator.py script simulates sensors using random values.
 
 Example data published to MQTT:
 
@@ -192,7 +215,7 @@ Flask exposes metrics at:
 
 http://localhost:5000/metrics
 
-Example:
+Example output:
 
 soil_moisture_percent 47.2
 temperature_fahrenheit 78.1
@@ -217,7 +240,7 @@ Generate docker-compose.yml
 
 Generate prometheus.yml
 
-Create defaulet configuration files if missing
+Create default configuration files if missing
 
 Start all containers
 
@@ -229,17 +252,17 @@ To stop all services:
 
 sudo docker compose -f docker-compose.yml down
 
-To remove volumes (the data that is stored on the containers) as well:
+To remove volumes (the data stored by the containers) as well:
 
 sudo docker compose -f docker-compose.yml down -v
-
-
 Development Notes
 Regenerating configuration
 
 If the configuration changes:
 
-python3 docker/make_yaml.py or bring down the services and rerun the setup script
+python3 docker/make_yaml.py
+
+or bring down the services and rerun the setup script.
 
 Viewing container logs
 docker logs flask-server
@@ -249,7 +272,6 @@ docker logs prometheus
 docker logs grafana
 Viewing running containers
 docker ps -a
-
 Technologies Used
 
 Python
