@@ -1,4 +1,4 @@
-# PlantPilot – Smart Irrigation Monitoring Stack (Docker)
+# PlantPilot – Smart Irrigation System
 
 ## Command to start the project
 
@@ -59,7 +59,7 @@ From the project root (`~/Capstone_Project`):
 ```
 Capstone_Project/
 │
-├── setup.sh                # Main setup + run script
+├── setup.sh                # Main setup & run script
 ├── docker-compose.yml      # GENERATED – do not edit manually
 ├── prometheus.yml          # GENERATED – do not edit manually
 ├── .env                    # Environment variables for services (Use this for things we want to be secured.)
@@ -180,7 +180,7 @@ Visualizes metrics collected by Prometheus.
 
 Dashboards include:
 
-- Soil moisture gauge  
+- Soil moisture time series  
 - Temperature time series  
 - Humidity time series  
 
